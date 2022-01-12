@@ -1,0 +1,30 @@
+#include <stdio.h>
+int main()
+{
+	int month[13]={0,31,28,31,30,31,30,31,31,30,31,30,31};
+	int nian,yue,ri,day;
+	int n=1990,y=1,r;
+	int time;scanf("%d",&time); 
+	for(int i=1;i<=time;i++)
+	{
+		scanf("%d %d %d",&nian,&yue,&ri);
+		r=ri-1;
+		while(n!=nian||y!=yue)
+		{
+			if(n%400==0||(n%4==0&&n%100!=0))
+				{
+					if(y==2) r+=29;
+					else r+=month[y];
+				}
+			else r+=month[y];
+				y++;
+			if(y==13)
+				{
+					n++; y=1;
+				}	
+		}
+		if(r%5>=0&&r%5<=2) printf("He was fishing on %d.%d.%d\n",nian,yue,ri);
+		else printf("He was basking on %d.%d.%d\n",nian,yue,ri);
+		r=0;
+	}
+}
